@@ -25,6 +25,7 @@
  * @param res - Vercel response object
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Client } from '@notionhq/client';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
