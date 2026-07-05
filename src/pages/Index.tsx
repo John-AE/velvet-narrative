@@ -135,7 +135,7 @@ const Index = () => {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold"
+              className="dark:text-white text-foreground dark:border-white/20 border-border dark:hover:bg-white/10 hover:bg-accent px-8 py-6 text-lg font-semibold"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               Request Quote
