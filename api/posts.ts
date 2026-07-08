@@ -90,15 +90,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         brandVal = 'EuroLite'; // Default fallback brand
       }
       
+      let categoryVal = '';
+      if (props.Category) {
+        if (props.Category.type === 'rich_text') {
+          categoryVal = getPlainText(props.Category.rich_text || []);
+        } else if (props.Category.type === 'select') {
+          categoryVal = props.Category.select?.name || '';
+        }
+      }
+
       return {
         id: page.id,
         title: getPlainText(props.Title?.title || []),
         excerpt: getPlainText(props.Excerpt?.rich_text || []),
         content: getPlainText(props.Content?.rich_text || []),
-        // Handle both file uploads and external image URLs
         image: props['Featured Image']?.files?.[0]?.file?.url || 
                props['Featured Image']?.files?.[0]?.external?.url || '',
-        category: getPlainText(props.Category?.rich_text || []),
+        category: categoryVal,
         brand: brandVal,
         author: brandVal, // Keep compatibility for potential frontend references
         date: props.Date?.date?.start || '',
