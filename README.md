@@ -77,8 +77,8 @@ A luxury e-shop for premium **EuroLite Electrical Switches and Sockets**, powere
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/John-AE/velvet-narrative.git
-   cd velvet-narrative
+    git clone https://github.com/John-AE/london-labels.git
+    cd london-labels
    ```
 
 2. **Install dependencies**
