@@ -8,18 +8,18 @@
  * - NOTION_API_KEY: Notion integration secret key
  * - NOTION_DATABASE_ID: ID of the Notion database containing blog posts
  * 
- * Notion Database Schema:
- * - Title (title): Post title
- * - Excerpt (rich_text): Short description
- * - Content (rich_text): Full article content
- * - Featured Image (files): Hero image for post
- * - Category (rich_text): Post category
- * - Author (rich_text): Author name
- * - Date (date): Publication date
- * - External URL (url): Link to full article (optional)
- * - Likes (number): Like count
- * - Views (number): View count
- * - Status (status): Must be "Published" to appear
+   * Notion Database Schema:
+   * - Title (title): Post title
+   * - Excerpt (rich_text): Short description
+   * - Content (rich_text): Full article content
+   * - Featured Image (files): Hero image for post
+   * - Category (rich_text): Post category
+   * - Author (rich_text): Author name
+   * - Date (date): Publication date
+   * - External URL (url): Link to full article (optional)
+   * - Likes (number): Like count
+   * - Views (number): View count
+   * - Status (status): Product availability status
  * 
  * @param req - Vercel request object
  * @param res - Vercel response object
@@ -52,13 +52,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Initialize Notion client with API key
     const notion = new Client({ auth: apiKey });
     
-    // Query the database for published posts only
+    // Query the database for all items
     const response = await notion.databases.query({
       database_id: databaseId,
-      filter: {
-        property: 'Status',
-        status: { equals: 'Published' }, // Only show published posts
-      },
       sorts: [{ property: 'Date', direction: 'descending' }], // Newest first
     });
 
@@ -110,6 +106,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         likes: props.Likes?.number || 0,
         views: props.Views?.number || 0,
         price: priceVal,
+        status: props.Status?.status?.name || '',
       };
     });
 

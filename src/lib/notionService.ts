@@ -29,6 +29,7 @@ export interface BlogPost {
   likes: number;           // Number of likes
   views: number;           // Number of views
   readTime: string;        // Display metric (can be reused or empty)
+  status: string;          // Product status (e.g., "Available", "Almost Sold Out", "Sold Out")
 }
 
 // Product alias for cleaner e-shop semantics

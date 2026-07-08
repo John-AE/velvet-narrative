@@ -29,7 +29,7 @@ interface StoryCardProps extends Product {
 }
 
 export const StoryCard = (props: StoryCardProps) => {
-  const { title, excerpt, image, category, brand, price, onClick } = props;
+  const { title, excerpt, image, category, brand, price, status, onClick } = props;
   const { addToCart } = useCart();
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -40,6 +40,12 @@ export const StoryCard = (props: StoryCardProps) => {
   const formattedPrice = typeof price === 'number' 
     ? formatNaira(price) 
     : (price ? (price.toString().startsWith('₦') ? price.toString() : `₦${price}`) : 'Price on request');
+
+  const statusClasses = status === 'Sold Out'
+    ? 'bg-destructive text-destructive-foreground'
+    : status === 'Almost Sold Out'
+      ? 'bg-orange-500 text-white'
+      : 'bg-emerald-500 text-white';
 
   return (
     <Card
@@ -64,6 +70,13 @@ export const StoryCard = (props: StoryCardProps) => {
               {category || "Uncategorized"}
             </span>
           </div>
+          {status && (
+            <div className="absolute top-4 right-4">
+              <span className={`px-3 py-1 text-xs font-semibold rounded-full uppercase tracking-wider ${statusClasses}`}>
+                {status}
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="p-6 pb-2">

@@ -177,7 +177,7 @@ const Index = () => {
           ) : products.length === 0 ? (
             <div className="text-center py-20 border-2 border-dashed border-border rounded-xl">
               <p className="text-muted-foreground text-lg mb-2">No products found in the collection.</p>
-              <p className="text-sm text-muted-foreground/75">Ensure they are marked as "Published" in your Notion database.</p>
+              <p className="text-sm text-muted-foreground/75">Ensure products are added to your Notion database.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

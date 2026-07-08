@@ -66,7 +66,7 @@ Complete technical documentation for developers working with the SmartDaily blog
 │  - Category, Author, Date                           │
 │  - External URL (url)                               │
 │  - Likes, Views (number)                            │
-│  - Status (status) → "Published"                    │
+│  - Status (status) → "Available", "Almost Sold Out", or "Sold Out"                    │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -420,7 +420,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     database_id: process.env.NOTION_DATABASE_ID,
     filter: {
       property: 'Status',
-      status: { equals: 'Published' },
+      // filter removed: all statuses are returned
     },
     sorts: [{ property: 'Date', direction: 'descending' }],
   });
@@ -899,7 +899,7 @@ const { data: posts } = useQuery({
 **Possible Causes**:
 - Notion API key invalid
 - Database ID incorrect
-- No posts with Status = "Published"
+- Products not added to Notion database
 
 **Solution**:
 ```bash
