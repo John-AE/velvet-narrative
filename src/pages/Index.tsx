@@ -119,7 +119,7 @@ const Index = () => {
             London Labels
           </h1>
           
-          <p className="text-lg md:text-xl text-hero-text/90 mb-8 max-w-3xl mx-auto leading-relaxed font-['Jost',sans-serif]">
+          <p className="text-lg md:text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed font-['Jost',sans-serif] drop-shadow-sm">
             Exquisite finishes, luxury switches, and refined brass hardware. 
             Tailoring elegant socket plates and premium switches for sophisticated interiors.
           </p>
